@@ -1,0 +1,78 @@
+﻿Sarvesh Gupta
+
+
+Here are 3 files:
+server.c 
+client.c
+readme.txt
+
+
+To run the server.c file, Use the following command:
+gcc server.c -o server
+./server 6622
+
+
+To run the client.c file, Use the following command:
+gcc client.c -o client
+./client 127.0.0.1 6622
+
+
+In the server file, all 9 commands are executed and output is displayed by the client file on its terminal:
+
+
+Commands:
+
+
+/user:
+The client id of all the active clients is displayed.
+
+
+/files:
+A list of all the files associated with the active client is displayed.
+
+
+/upload:
+The file is uploaded if its name is different from existing uploaded files and if it is uploaded in the folder from which the client function is executed. Otherwise, it is show errors accordingly.
+
+
+/download:
+You can only download a particular file if it is uploaded by any active client, and you are associated with that file in any manner (Owner, Editor, Viewer). Otherwise, errors will be shown accordingly.
+
+
+/invite:
+You can only invite anyone if you are the owner of that file.
+You can not invite yourself.
+If you invite a client multiple times with different permission, then each time permisiion will be modified. 
+Invitation can only be sent to any active file.
+Notification of invitation will be received only if the client do any activity on the terminal.
+
+
+/read:
+You can read any file, only if you are associated with it in any manner (Owner, Editor, Viewer). While reading:
+If no index is provided, then whole file will be displayed. 
+If only 1 index is provided, then file from that index to the end is displayed.
+If both index are provided, then starting index should be less than ending index, and file is displayed from starting index (starting index is included) to the end index (end index is not included).  Range of read: [start_index, end_index)
+Indexes should be in the range of file.
+
+
+/insert:
+You can read any file, only if you are associated with it as Owner or Editor. While Inserting:
+If no index is given, the message is inserted at the end.
+Otherwise, msg is inserted on the given index.
+The index should be in the range of file.
+
+
+/delete:
+You can read any file, only if you are associated with it as Owner or Editor. While deleting:
+If no index is provided, then the data of the whole file will be deleted. 
+If only 1 index is provided, then the file from that index to the end is deleted.
+If both indexes are provided, then starting index should be less than the ending index, and data is deleted from starting index (starting index is included) to the end index (end index is not included).  Range of delete: [start_index, end_index)
+Indexes should be in the range of file.
+
+
+/exit:
+If a client exits in proper way (by using exit command), then all the files and collaboration with files will be deleted. And it is also removed from active client list.
+
+
+It will run fine in both the cases:
+If client and server file are in same folder, or in different folder.
